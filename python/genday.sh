@@ -1,5 +1,6 @@
 #!/bin/bash
 
+year=${PWD##*/}
 day=${1##+(0)}
 project=$(printf "day%02d" $1)
 session="$AOC_SESSION"
@@ -9,7 +10,7 @@ mkdir ${project}
 cd ${project}
 
 # get input
-curl -s "https://adventofcode.com/2022/day/${day}/input" --cookie "session=${AOC_SESSION}" -o input.txt
+curl -s "https://adventofcode.com/${year}/day/${day}/input" --cookie "session=${AOC_SESSION}" -o input.txt
 
 # add readme
 touch README.md
