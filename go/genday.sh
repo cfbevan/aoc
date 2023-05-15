@@ -53,7 +53,7 @@ import (
 	"testing"
 )
 
-func TestPart1(t *testing.T) {
+func TestPart1_ex1(t *testing.T) {
 	input := ""
 	expect := ""
 	actual := part1(input)
@@ -62,7 +62,7 @@ func TestPart1(t *testing.T) {
 	}
 }
 
-func TestPart2(t *testing.T) {
+func TestPart2_ex1(t *testing.T) {
 	input := ""
 	expect := ""
 	actual := part2(input)
