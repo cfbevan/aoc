@@ -19,7 +19,8 @@ echo -n '{
   "name": "aoc",
   "main": "index.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "main": "ts-node src/index.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
@@ -36,10 +37,10 @@ echo -n '{
 echo -n '{
   "compilerOptions": {
     "target": "es2016",
-    "module": "commonjs",                                
+    "module": "commonjs",
     "rootDir": "./src",
-    "strict": true,                                      
-    "skipLibCheck": true                                 
+    "strict": true,
+    "skipLibCheck": true
   }
 }' > tsconfig.json
 
@@ -64,12 +65,13 @@ export const pt2 = (s: string): string => {
     return s;
 }
 
-// Load file
-const data = readFileSync("input.txt").toString()
+if (required.main === module) {
+    // Load file
+    const data = readFileSync("input.txt").toString()
 
-console.log(pt1(data))
-
-console.log(pt2(data))
+    console.log(pt1(data))
+    console.log(pt2(data))
+}
 ' > src/index.ts
 
 mkdir "__tests__"
