@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 
 export const pt1 = (s: string): number => {
-    let floor: number = 0;
+    let floor = 0;
     [...s].forEach(c => {
         switch(c) {
             case '(':
@@ -16,8 +16,8 @@ export const pt1 = (s: string): number => {
 }
 
 export const pt2 = (s: string): number => {
-    let floor: number = 0;
-    let output: number = -1;
+    let floor = 0;
+    let output = -1;
     [...s].forEach((c, i) => {
         switch(c) {
             case '(':

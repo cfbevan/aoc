@@ -20,6 +20,7 @@ echo -n '{
   "main": "index.ts",
   "scripts": {
     "test": "jest",
+    "lint": "npx eslint . --fix",
     "main": "ts-node src/index.ts"
   },
   "devDependencies": {
@@ -27,12 +28,28 @@ echo -n '{
     "@babel/preset-env": "^7.21.5",
     "@babel/preset-typescript": "^7.21.5",
     "@types/jest": "^29.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
     "babel-jest": "^29.5.0",
+    "eslint": "^8.41.0",
     "jest": "^29.5.0",
-    "typescript": "^5.0.4",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }' > package.json
+
+echo -n '/* eslint-env node */
+module.exports = {
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  root: true
+  env: {
+    jest: true,
+    node: true,
+  },
+};
+' > .eslintrc.cjs
 
 echo -n '{
   "compilerOptions": {
@@ -49,7 +66,7 @@ echo -n "module.exports = {
     ['@babel/preset-env', {targets: {node: 'current'}}],
     '@babel/preset-typescript',
   ],
-};" > babel.config.js
+};" > babel.config.cjs
 
 npm install
 
@@ -65,9 +82,9 @@ export const pt2 = (s: string): string => {
     return s;
 }
 
-if (required.main === module) {
+if (require.main === module) {
     // Load file
-    const data = readFileSync("input.txt").toString()
+    const data = readFileSync("input.txt").toString().trim()
 
     console.log(pt1(data))
     console.log(pt2(data))
