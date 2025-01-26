@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "aoc-{{cookiecutter.year}}-day{{'%02d'|format(cookiecutter.day|int)}}"
+version = "0.1.0"
+description = "AOC {{cookiecutter.year}} Day {{cookiecutter.day}}"
+authors = ["Charles Bevan <cfbevan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

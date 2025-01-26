@@ -1,21 +1,4 @@
-#!/bin/bash
-
-year=${PWD##*/}
-day=${1##+(0)}
-project=$(printf "day%02d" $1)
-session="$AOC_SESSION"
-
-cargo new ${project}
-
-cd ${project}
-
-# get input
-curl -s "https://adventofcode.com/${year}/day/${day}/input" --cookie "session=${AOC_SESSION}" -o input.txt
-
-# add readme
-touch README.md
-
-echo -n 'fn pt1(s: &str) -> usize {
+fn pt1(s: &str) -> usize {
     return s;
 }
 
@@ -44,4 +27,4 @@ mod tests {
         let test = "";
         assert_eq!(pt1(test), 0)
     }
-}' > src/main.rs
+}
